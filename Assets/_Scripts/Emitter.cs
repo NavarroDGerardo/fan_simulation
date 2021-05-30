@@ -30,8 +30,8 @@ public class Emitter : MonoBehaviour
             pScript.color = new Vector3(c.r, c.g, c.b);
             pScript.r = diam / 2f;
             pScript.g = 9.81f;
-            pScript.currPos = new Vector3(Random.Range(1f, 10f), Random.Range(6f, 12f), Random.Range(-2f, 2f));
-            pScript.iniPos = new Vector3(Random.Range(1f, 10f), Random.Range(6f, 16f), Random.Range(-1f, 1f));;
+            pScript.currPos = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(6f, 12f), Random.Range(-2f, -11f));
+            pScript.iniPos = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(4f, 16f), Random.Range(-2f, -11f));
             pScript.prevPos = pScript.currPos;
             //Each particle’s mass will equal the radius times 2.
             pScript.m = pScript.r * 2;

@@ -55,7 +55,7 @@ public class Particle : MonoBehaviour
             {
                 
                 f.y = -m * g * 0.2f;
-                f.x = -m * g *  0.3f;
+                f.z = m * g *  0.3f;
                 
             
                 if(currPos.y != prevPos.y)
