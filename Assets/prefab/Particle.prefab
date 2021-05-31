@@ -114,8 +114,14 @@ MonoBehaviour:
   lastfy: 0
   f: {x: 0, y: 0, z: 0}
   a: {x: 0, y: 0, z: 0}
+  iniPos: {x: 0, y: 0, z: 0}
   prevPos: {x: 0, y: 0, z: 0}
   currPos: {x: 5, y: 10, z: 15}
   airForce: {x: 0, y: 0, z: 0}
   restitution: 0
   color: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
+  rain: -1
+  fanBlade_1: {fileID: 0}
+  fanBlade_2: {fileID: 0}
+  fanBlade_3: {fileID: 0}

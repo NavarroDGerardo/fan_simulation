@@ -7,6 +7,10 @@ public class Emitter : MonoBehaviour
     public int numParticles;
     private GameObject[] particles;
 
+    public GameObject fanBlade_1;
+    public GameObject fanBlade_2;
+    public GameObject fanBlade_3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +42,10 @@ public class Emitter : MonoBehaviour
             pScript.restitution = 0.7f;
             pScript.f = Vector3.zero;
 
-            
+            //pass the scripts of all the blades
+            pScript.fanBlade_1 = fanBlade_1.GetComponent<Blade>();
+            pScript.fanBlade_2 = fanBlade_2.GetComponent<Blade>();
+            pScript.fanBlade_3 = fanBlade_3.GetComponent<Blade>();
         }
     }
     // Update is called once per frame
