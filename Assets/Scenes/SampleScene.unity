@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.034871243, g: 0.23095089, b: 0.39051813, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -612,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9082e04b25548f438c6da9366072bc9,
         type: 3}
       propertyPath: m_Name
-      value: TurbinebladeV2 (1)
+      value: blade 02
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c9082e04b25548f438c6da9366072bc9,
         type: 3}
@@ -686,7 +686,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9082e04b25548f438c6da9366072bc9,
         type: 3}
       propertyPath: m_Name
-      value: TurbinebladeV2
+      value: blade 01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9082e04b25548f438c6da9366072bc9, type: 3}
@@ -755,7 +755,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9082e04b25548f438c6da9366072bc9,
         type: 3}
       propertyPath: m_Name
-      value: TurbinebladeV2 (2)
+      value: turbine 03
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c9082e04b25548f438c6da9366072bc9,
         type: 3}
@@ -796,6 +796,9 @@ MonoBehaviour:
   ParticlePrefab: {fileID: 4310532448106841914, guid: 7a35e2025a23146a1a719b4d0705c6ec,
     type: 3}
   numParticles: 500
+  fanBlade_1: {fileID: 673508113}
+  fanBlade_2: {fileID: 1262634710}
+  fanBlade_3: {fileID: 21277383}
 --- !u!4 &2128281545
 Transform:
   m_ObjectHideFlags: 0
