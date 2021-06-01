@@ -145,6 +145,7 @@ MonoBehaviour:
   B: {x: 0, y: 0, z: 0}
   C: {x: 0, y: 0, z: 0}
   D: {x: 0, y: 0, z: 0}
+  boxC: []
 --- !u!1001 &36811425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
@@ -263,6 +264,7 @@ MonoBehaviour:
   B: {x: 0, y: 0, z: 0}
   C: {x: 0, y: 0, z: 0}
   D: {x: 0, y: 0, z: 0}
+  boxC: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +455,7 @@ MonoBehaviour:
   B: {x: 0, y: 0, z: 0}
   C: {x: 0, y: 0, z: 0}
   D: {x: 0, y: 0, z: 0}
+  boxC: []
 --- !u!1 &1728916712
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +778,7 @@ GameObject:
   - component: {fileID: 2128281545}
   - component: {fileID: 2128281544}
   m_Layer: 0
-  m_Name: Emitter
+  m_Name: Rain emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticlePrefab: {fileID: 4310532448106841914, guid: 7a35e2025a23146a1a719b4d0705c6ec,
     type: 3}
-  numParticles: 500
+  numParticles: 200
   fanBlade_1: {fileID: 673508113}
   fanBlade_2: {fileID: 1262634710}
   fanBlade_3: {fileID: 21277383}

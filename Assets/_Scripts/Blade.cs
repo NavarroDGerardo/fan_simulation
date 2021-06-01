@@ -16,12 +16,28 @@ public class Blade : MonoBehaviour
     public Vector3 B;
     public Vector3 C;
     public Vector3 D;
-    Vector3[] boxC;
+    public Vector3[] boxC;
 
-    Vector3[] TransformBlade(Vector3[] input, Vector3[] box)
+    Vector3[] TransformCollider(Vector3[] box)
+    {
+        Vector3[] outputBox = new Vector3[box.Length];
+        Matrix4x4 r = Transformations.RotateM(angleZ, Transformations.AXIS.AX_Z);
+        Matrix4x4 t = Transformations.TranslateM(0, 3.45f, 0);
+        Matrix4x4 tLeft = Transformations.TranslateM(0.65f, 0, -0.2f);
+
+        for (int i = 0; i < box.Length; i++)
+        {
+            Vector4 temp = box[i];
+            temp.w = 1;
+            outputBox[i] = t * r * tLeft * temp;
+        }
+
+        return outputBox;
+    }
+
+    Vector3[] TransformBlade(Vector3[] input)
     {
         Vector3[] output = new Vector3[input.Length];
-        Vector3[] outputBox = new Vector3[box.Length];
         Matrix4x4 r = Transformations.RotateM(angleZ, Transformations.AXIS.AX_Z);
         Matrix4x4 t = Transformations.TranslateM(0, 3.45f, 0);
         Matrix4x4 tLeft = Transformations.TranslateM(0.65f, 0, -0.2f); 
@@ -33,14 +49,6 @@ public class Blade : MonoBehaviour
             output[i] =  t * r * tLeft * temp;
         }
 
-        for(int i = 0; i < box.Length; i++)
-        {
-            Vector4 temp = box[i];
-            temp.w = 1;
-            outputBox[i] = t * r * tLeft * temp;
-        }
-
-        boxC = outputBox;
         return output;
     }
 
@@ -52,7 +60,7 @@ public class Blade : MonoBehaviour
         D = new Vector3(-0.627f, 0.07f, -0.02f);
         originalBox = new Vector3[]{ A, B, C, D};
 
-        boxC = new Vector3[4];
+        boxC = originalBox;
 
         mf = gameObject.GetComponent<MeshFilter>();
         originalPoints = mf.mesh.vertices;
@@ -69,7 +77,8 @@ public class Blade : MonoBehaviour
         if (canRotate)
         {
             angleZ += dz;
-            mf.mesh.vertices = TransformBlade(originalPoints, originalBox);
+            mf.mesh.vertices = TransformBlade(originalPoints);
+            boxC = TransformCollider(originalBox);
         }
     }
 }

@@ -16,8 +16,8 @@ public class Particle : MonoBehaviour
     public float restitution;
     public Vector3 color;
     public Vector3 vel;
-    public bool rain;
-
+    public bool rain = false;
+    public Renderer rend;
     public Blade fanBlade_1;
     public Blade fanBlade_2;
     public Blade fanBlade_3;
@@ -25,7 +25,7 @@ public class Particle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log(fanBlade_1.A);
+        rend = this.GetComponent<Renderer>();
     }
  
  
@@ -44,9 +44,9 @@ public class Particle : MonoBehaviour
 
     void CheckFanBlades(Blade blade)
     {
-        Vector3 u = blade.B - blade.A;
-        Vector3 v = blade.D - blade.A;
-        Vector3 w = blade.C - blade.A;
+        Vector3 u = blade.boxC[1] - blade.boxC[0];
+        Vector3 v = blade.boxC[3] - blade.boxC[0];
+        Vector3 w = blade.boxC[2] - blade.boxC[0];
 
         Vector3 x = transform.position;
 
@@ -54,21 +54,22 @@ public class Particle : MonoBehaviour
         Vector3 b = Vector3.Cross(v, x);
         Vector3 c = Vector3.Cross(w, x);
 
-        Vector3 ab = blade.A + new Vector3(a.x * u.x, a.y * u.y, a.z * u.z);
-        Vector3 ad = blade.A + new Vector3(b.x * v.x, b.y * v.y, b.z * v.z);
-        Vector3 ac = blade.A + new Vector3(c.x * w.x, c.y * w.y, c.z * w.z);
+        Vector3 ab = blade.boxC[0] + new Vector3(a.x * u.x, a.y * u.y, a.z * u.z);
+        Vector3 ad = blade.boxC[0] + new Vector3(b.x * v.x, b.y * v.y, b.z * v.z);
+        Vector3 ac = blade.boxC[0] + new Vector3(c.x * w.x, c.y * w.y, c.z * w.z);
 
-        if((blade.A.x <= ab.x && blade.A.y <= ab.y && blade.A.z <= ab.z) && (blade.B.x >= ab.x && blade.B.y >= ab.y && blade.B.z >= ab.z))
+        if ((blade.boxC[0].x <= ab.x && blade.boxC[0].y <= ab.y && blade.boxC[0].z <= ab.z) && (blade.boxC[1].x >= ab.x && blade.boxC[1].y >= ab.y && blade.boxC[1].z >= ab.z))
         {
-            if((blade.A.x <= ad.x && blade.A.y <= ad.y && blade.A.z <= ad.z) && (blade.D.x >= ad.x && blade.D.y >= ad.y && blade.D.z >= ad.z))
+            if((blade.boxC[0].x <= ad.x && blade.boxC[0].y <= ad.y && blade.boxC[0].z <= ad.z) && (blade.boxC[3].x >= ad.x && blade.boxC[3].y >= ad.y && blade.boxC[3].z >= ad.z))
             {
-                if ((blade.A.x <= ac.x && blade.A.y <= ac.y && blade.A.z <= ac.z) && (blade.C.x >= ac.x && blade.C.y >= ac.y && blade.C.z >= ac.z))
+                if ((blade.boxC[0].x <= ac.x && blade.boxC[0].y <= ac.y && blade.boxC[0].z <= ac.z) && (blade.boxC[2].x >= ac.x && blade.boxC[2].y >= ac.y && blade.boxC[2].z >= ac.z))
                 {
-                    Debug.Log("bouncing");
-                    prevPos.z = currPos.z;
+                    Debug.Log("Bounce");
+                    rend.material.SetColor("_Color", Color.red);
+                    /*prevPos.z = currPos.z;
                     currPos.z = r;
                     f.z = -f.z * restitution;
-                    a = f / m;
+                    a = f / m;*/
                 }
             }
         }
