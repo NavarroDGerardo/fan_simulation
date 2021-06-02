@@ -52,11 +52,12 @@ public class Particle : MonoBehaviour
                 prevPos = iniPos;
                 count--;
             }
-            
+            bounce = true;
             
             
             
         }
+        
     }
 
     void CheckBox(Blade blade)
@@ -69,7 +70,7 @@ public class Particle : MonoBehaviour
             rend.material.SetColor("_Color", Color.red);
             prevPos.z = currPos.z;
             currPos.z = r;
-            f.z = -f.z * restitution * 5f;
+            f.z = -f.z * 1.3f;
             bounce = false;
             Debug.Log("Bounce " + f.z);
             a = f / m;
