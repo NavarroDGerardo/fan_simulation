@@ -51,8 +51,9 @@ public class Particle : MonoBehaviour
                 currPos = iniPos;
                 prevPos = iniPos;
                 count--;
+                bounce = true;
             }
-            bounce = true;
+            
             
             
             
