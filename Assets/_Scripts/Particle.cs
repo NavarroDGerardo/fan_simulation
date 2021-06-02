@@ -49,12 +49,16 @@ public class Particle : MonoBehaviour
             Mathf.Abs(Vector3.Dot(d, blade.directions[1])) <= blade.half.y &&
             Mathf.Abs(Vector3.Dot(d, blade.directions[2])) <= blade.half.z)
         {
-            Debug.Log("Bounce");
             rend.material.SetColor("_Color", Color.red);
+            prevPos.z = currPos.z;
+            currPos.z = r;
+            f.z = -f.z * restitution * 10f;
+            Debug.Log("Bounce " + f.z);
+            a = f / m;
         }
     }
 
-    void CheckFanBlades(Blade blade)
+    /*void CheckFanBlades(Blade blade)
     {
         Vector3 u = blade.boxC[1] - blade.boxC[0];
         Vector3 v = blade.boxC[3] - blade.boxC[0];
@@ -76,16 +80,16 @@ public class Particle : MonoBehaviour
             {
                 if ((blade.boxC[0].x <= ac.x && blade.boxC[0].y <= ac.y && blade.boxC[0].z <= ac.z) && (blade.boxC[2].x >= ac.x && blade.boxC[2].y >= ac.y && blade.boxC[2].z >= ac.z))
                 {
-                    Debug.Log("Bounce");
                     rend.material.SetColor("_Color", Color.red);
-                    /*prevPos.z = currPos.z;
+                    prevPos.z = currPos.z;
                     currPos.z = r;
                     f.z = -f.z * restitution;
-                    a = f / m;*/
+                    Debug.Log("Bounce " +  f.z);
+                    a = f / m;
                 }
             }
         }
-    }
+    }*/
 
 
     // Update is called once per frame

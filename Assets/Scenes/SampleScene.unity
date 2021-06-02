@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36,
         type: 3}
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticlePrefab: {fileID: 4310532448106841914, guid: 7a35e2025a23146a1a719b4d0705c6ec,
     type: 3}
-  numParticles: 100
+  numParticles: 500
   fanBlade_1: {fileID: 673508113}
   fanBlade_2: {fileID: 1262634710}
   fanBlade_3: {fileID: 21277383}
