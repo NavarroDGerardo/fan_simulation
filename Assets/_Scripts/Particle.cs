@@ -42,6 +42,18 @@ public class Particle : MonoBehaviour
         }
     }
 
+    void CheckBox(Blade blade)
+    {
+        Vector3 d = transform.position - blade.center;
+        if (Mathf.Abs(Vector3.Dot(d, blade.directions[0])) <= blade.half.x &&
+            Mathf.Abs(Vector3.Dot(d, blade.directions[1])) <= blade.half.y &&
+            Mathf.Abs(Vector3.Dot(d, blade.directions[2])) <= blade.half.z)
+        {
+            Debug.Log("Bounce");
+            rend.material.SetColor("_Color", Color.red);
+        }
+    }
+
     void CheckFanBlades(Blade blade)
     {
         Vector3 u = blade.boxC[1] - blade.boxC[0];
@@ -79,11 +91,10 @@ public class Particle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckFanBlades(fanBlade_1);
-        CheckFanBlades(fanBlade_2);
-        CheckFanBlades(fanBlade_3);
+        CheckBox(fanBlade_1);
+        CheckBox(fanBlade_2);
+        CheckBox(fanBlade_3);
 
-        //Debug.Log(currPos);
         if (rain){
             if(Mathf.Abs(currPos.y - prevPos.y) < 0.00001f && Mathf.Abs(currPos.y - r) < 0.00001f)
             {

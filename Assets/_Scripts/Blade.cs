@@ -18,6 +18,12 @@ public class Blade : MonoBehaviour
     public Vector3 D;
     public Vector3[] boxC;
 
+    public Vector3 center;
+    public Vector3 half;
+    public Vector3[] directions;
+
+    public GameObject cDot;
+
     Vector3[] TransformCollider(Vector3[] box)
     {
         Vector3[] outputBox = new Vector3[box.Length];
@@ -58,9 +64,28 @@ public class Blade : MonoBehaviour
         B = new Vector3(0.7f, -0.07f, -0.02f);
         C = new Vector3(0.7f, 0.07f, -0.02f);
         D = new Vector3(-0.627f, 0.07f, -0.02f);
+        
         originalBox = new Vector3[]{ A, B, C, D};
-
         boxC = originalBox;
+
+        float xMin = Mathf.Abs(Mathf.Min(boxC[0].x, boxC[1].x));
+        float xMax = Mathf.Max(boxC[0].x, boxC[1].x);
+        float yMin = Mathf.Abs(Mathf.Min(boxC[0].y, boxC[2].y));
+        float yMax = Mathf.Max(boxC[0].y, boxC[2].y);
+
+        half = new Vector3((xMax + xMin) / 2, (yMax + yMin) / 2, 0f);
+        
+        center = new Vector3(
+            (boxC[0].x + boxC[2].x) / 2,
+            (boxC[3].y + boxC[1].y) / 2,
+            boxC[0].z
+            );
+
+        directions = new Vector3[] {
+            new Vector3(1, 0, 0),
+            new Vector3(0, 1, 0),
+            new Vector3(0, 0, 1)
+        };
 
         mf = gameObject.GetComponent<MeshFilter>();
         originalPoints = mf.mesh.vertices;
@@ -69,6 +94,19 @@ public class Blade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        center = new Vector3(
+            (boxC[0].x + boxC[2].x) / 2,
+            (boxC[3].y + boxC[1].y) / 2,
+            boxC[0].z
+            );
+
+        cDot.transform.position = center;
+
+        Debug.DrawLine(boxC[0], boxC[1], Color.red);
+        Debug.DrawLine(boxC[1], boxC[2], Color.red);
+        Debug.DrawLine(boxC[3], boxC[2], Color.red);
+        Debug.DrawLine(boxC[0], boxC[3], Color.red);
+
         if (Input.GetKeyDown("space"))
         {
             canRotate = !canRotate;
