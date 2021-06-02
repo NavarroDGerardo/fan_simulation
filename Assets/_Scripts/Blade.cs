@@ -73,7 +73,7 @@ public class Blade : MonoBehaviour
         float yMin = Mathf.Abs(Mathf.Min(boxC[0].y, boxC[2].y));
         float yMax = Mathf.Max(boxC[0].y, boxC[2].y);
 
-        half = new Vector3((xMax + xMin) / 2, (yMax + yMin) / 2, 0f);
+        half = new Vector3((xMax + xMin) / 2, (yMax + yMin) / 2, 0.11f);
         
         center = new Vector3(
             (boxC[0].x + boxC[2].x) / 2,
@@ -97,9 +97,10 @@ public class Blade : MonoBehaviour
         center = new Vector3(
             (boxC[0].x + boxC[2].x) / 2,
             (boxC[3].y + boxC[1].y) / 2,
-            boxC[0].z
+            boxC[0].z / 2
             );
 
+        
         cDot.transform.position = center;
 
         Debug.DrawLine(boxC[0], boxC[1], Color.red);

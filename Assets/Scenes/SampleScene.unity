@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticlePrefab: {fileID: 4310532448106841914, guid: 7a35e2025a23146a1a719b4d0705c6ec,
     type: 3}
-  numParticles: 500
+  numParticles: 100
   fanBlade_1: {fileID: 673508113}
   fanBlade_2: {fileID: 1262634710}
   fanBlade_3: {fileID: 21277383}
