@@ -21,6 +21,8 @@ public class Particle : MonoBehaviour
     public Blade fanBlade_1;
     public Blade fanBlade_2;
     public Blade fanBlade_3;
+    public bool bounce = true;
+    public int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +38,23 @@ public class Particle : MonoBehaviour
         {
             //Debug.Log("Floor");
            
-            currPos = iniPos;
-            prevPos = iniPos;
+            
+
+            if(count == 0){
+                prevPos.y = currPos.y;
+                currPos.y = r;
+                f.y = -f.y * 0.2f;
+                f.z = f.z * 0.1f;
+                a = f / m;
+                count++;
+            }else{
+                currPos = iniPos;
+                prevPos = iniPos;
+                count--;
+            }
+            
+            
+            
             
         }
     }
@@ -52,7 +69,8 @@ public class Particle : MonoBehaviour
             rend.material.SetColor("_Color", Color.red);
             prevPos.z = currPos.z;
             currPos.z = r;
-            f.z = -f.z * restitution * 10f;
+            f.z = -f.z * restitution * 5f;
+            bounce = false;
             Debug.Log("Bounce " + f.z);
             a = f / m;
         }
@@ -108,11 +126,12 @@ public class Particle : MonoBehaviour
             }
             else
             {
-                
+                if(bounce){
+                    f.z = m * g *  0.3f;
+                }
                 f.y = -m * g * 0.2f;
-                f.z = m * g *  0.3f;
                 
-            
+                
                 if(currPos.y != prevPos.y)
                 {
                     vel = (currPos - prevPos) / Time.deltaTime;
