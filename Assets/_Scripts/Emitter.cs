@@ -11,6 +11,8 @@ public class Emitter : MonoBehaviour
     public GameObject fanBlade_2;
     public GameObject fanBlade_3;
 
+    public GameObject post;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,8 @@ public class Emitter : MonoBehaviour
             pScript.fanBlade_1 = fanBlade_1.GetComponent<Blade>();
             pScript.fanBlade_2 = fanBlade_2.GetComponent<Blade>();
             pScript.fanBlade_3 = fanBlade_3.GetComponent<Blade>();
+
+            pScript.post = post.GetComponent<Post>();
         }
     }
     // Update is called once per frame
